@@ -1,4 +1,4 @@
-package perlino;
+package montecarlo.perlino;
 
 
 import java.util.List;

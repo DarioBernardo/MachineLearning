@@ -1,6 +1,4 @@
-package randomWalk;
-
-import java.util.ArrayList;
+package montecarlo.randomWalk;
 
 /**
  * Created by dario on 28/12/14.

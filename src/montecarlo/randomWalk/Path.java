@@ -1,4 +1,4 @@
-package randomWalk;
+package montecarlo.randomWalk;
 
 import java.util.ArrayList;
 

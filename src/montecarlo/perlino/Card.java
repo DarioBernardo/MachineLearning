@@ -1,4 +1,4 @@
-package perlino;
+package montecarlo.perlino;
 
 /**
  * Created by dario on 26/12/14.
