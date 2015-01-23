@@ -3,6 +3,7 @@ package logisticRegression;
 import linearAlgebra.Matrix;
 import linearAlgebra.MyConfusionMatrix;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class GradientDescentTest {
     @Test
     public void lendingClubTest() throws IOException {
 
-        String basePath = "/home/dario/Documents/GradientDescentTestData/LendingClub/";
+        String basePath = "test/resources/GradientDescentTestData/LendingClub/";
 
         DataAndOutputPair train = Matrix.readFromCSV(basePath + "TRAIN_Encoded_Data.csv", '\t');
         DataAndOutputPair test = Matrix.readFromCSV(basePath + "TEST_Encoded_Data.csv", '\t');
@@ -77,7 +78,7 @@ public class GradientDescentTest {
     public void comprehensiveTest() throws IOException {
 
 
-        String basePath = "/home/dario/Documents/GradientDescentTestData/comprehensiveTest/";
+        String basePath = "test/resources/GradientDescentTestData/comprehensiveTest/";
 
         Matrix x = Matrix.readFromFileDisk(basePath + "x.txt");
         Matrix y = Matrix.readFromFileDisk(basePath + "y.txt");
@@ -114,7 +115,7 @@ public class GradientDescentTest {
     @Test
     public void test1() throws IOException {
 
-        String basePath = "/home/dario/Documents/GradientDescentTestData/test1/";
+        String basePath = "test/resources/GradientDescentTestData/test1/";
         Matrix x = Matrix.readFromFileDisk(basePath + "x.txt");
         Matrix y = Matrix.readFromFileDisk(basePath + "y.txt");
 
@@ -128,7 +129,7 @@ public class GradientDescentTest {
     @Test
     public void test2() throws IOException {
 
-        String basePath = "/home/dario/Documents/GradientDescentTestData/test2/";
+        String basePath = "test/resources/GradientDescentTestData/test2/";
         Matrix x = Matrix.readFromFileDisk(basePath + "x.txt");
         Matrix y = Matrix.readFromFileDisk(basePath + "y.txt");
 
