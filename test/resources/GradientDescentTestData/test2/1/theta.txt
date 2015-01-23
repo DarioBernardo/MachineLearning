@@ -1,0 +1,35 @@
+# Created by Octave 3.8.1, Tue Jan 13 11:35:23 2015 GMT <dario@horse>
+# name: theta
+# type: matrix
+# rows: 28
+# columns: 1
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+
+

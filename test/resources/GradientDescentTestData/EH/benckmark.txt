@@ -1,0 +1,5 @@
+woakil logistic regression takes: 62.198%
+
+class	0	1	total	Recall
+0	2690	1640	4,330	62.125
+1	392	647	1,039	62.271

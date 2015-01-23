@@ -1,0 +1,6 @@
+# Created by Octave 3.8.1, Tue Jan 13 11:19:05 2015 GMT <dario@horse>
+# name: J
+# type: scalar
+0.0839441922811073
+
+
