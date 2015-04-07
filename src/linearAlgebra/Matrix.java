@@ -11,9 +11,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * Created by dario on 23/01/15.
@@ -30,7 +35,7 @@ public class Matrix {
         this.doubleMatrix = new DoubleMatrix(doubleMatrix);
     }
 
-    public static Matrix create(ArrayList<double[]> doubles) {
+    public static Matrix create(List<double[]> doubles) {
         double[][] rawMatrix = new double[doubles.size()][];
         int i = 0;
         for (double[] aDoubleArray : doubles) {
@@ -41,13 +46,13 @@ public class Matrix {
         return new Matrix(m);
     }
 
-    public static Matrix readFromFileDisk(String path) throws IOException {
+    public static Matrix readFromFileDisk(String path, String delimType) throws IOException {
 
         final ArrayList<double[]> list = new ArrayList<>();
         Stream<String> lines = Files.lines(new File(path).toPath());
         lines.forEach(line -> {
             if (!line.isEmpty() && line.charAt(0) != '#') {
-                String[] splitLine = line.trim().split(" ");
+                String[] splitLine = line.trim().split(delimType);
                 double[] numbers = new double[splitLine.length];
                 for (int i = 0; i < splitLine.length; i++) {
                     numbers[i] = Double.parseDouble(splitLine[i].trim());
@@ -247,6 +252,20 @@ public class Matrix {
             }
         }
 
+    }
+
+    public Matrix introduceColumnOfOnesAtHead() {
+        int numberOfRows = this.getNumberOfRows();
+        int numberOfColumns = this.getNumberOfColumns();
+        DoubleMatrix result = new DoubleMatrix(numberOfRows, numberOfColumns +1);
+
+        for (int i = 0; i < numberOfRows; i++) {
+            result.put(i, 0, 1.0);
+            for (int j = 0; j < numberOfColumns; j++) {
+                result.put(i, j+1, doubleMatrix.get(i, j));
+            }
+        }
+        return new Matrix(result);
     }
 }
 

@@ -48,8 +48,7 @@ public class LogisticRegression {
     public static double regularisationFactor(Matrix theta, double lambda, double dataSetSize) {
 
         double sum = theta.removeFirstRow().squared().sum();
-        double regFactor = (lambda / (2 * dataSetSize)) * sum;
-        return regFactor;
+        return lambda / (2 * dataSetSize) * sum;
     }
 
 }

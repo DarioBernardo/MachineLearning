@@ -80,8 +80,8 @@ public class GradientDescentTest {
 
         String basePath = "test/resources/GradientDescentTestData/comprehensiveTest/";
 
-        Matrix x = Matrix.readFromFileDisk(basePath + "x.txt");
-        Matrix y = Matrix.readFromFileDisk(basePath + "y.txt");
+        Matrix x = Matrix.readFromFileDisk(basePath + "x.txt", " ");
+        Matrix y = Matrix.readFromFileDisk(basePath + "y.txt", " ");
 
         final double alpha = 0.01;
         final int numberOfIterations = 10_000;
@@ -116,8 +116,8 @@ public class GradientDescentTest {
     public void test1() throws IOException {
 
         String basePath = "test/resources/GradientDescentTestData/test1/";
-        Matrix x = Matrix.readFromFileDisk(basePath + "x.txt");
-        Matrix y = Matrix.readFromFileDisk(basePath + "y.txt");
+        Matrix x = Matrix.readFromFileDisk(basePath + "x.txt", " ");
+        Matrix y = Matrix.readFromFileDisk(basePath + "y.txt", " ");
 
         for (int i = 1; i <= 6; i++) {
             String currentPath = basePath + i + "/";
@@ -130,8 +130,8 @@ public class GradientDescentTest {
     public void test2() throws IOException {
 
         String basePath = "test/resources/GradientDescentTestData/test2/";
-        Matrix x = Matrix.readFromFileDisk(basePath + "x.txt");
-        Matrix y = Matrix.readFromFileDisk(basePath + "y.txt");
+        Matrix x = Matrix.readFromFileDisk(basePath + "x.txt", " ");
+        Matrix y = Matrix.readFromFileDisk(basePath + "y.txt", " ");
 
         for (int i = 1; i <= 7; i++) {
             String currentPath = basePath + i + "/";
@@ -142,12 +142,12 @@ public class GradientDescentTest {
 
     private void readRestOfTheDataAndCompare(String basePath, Matrix x, Matrix y) throws IOException {
 
-        Matrix j = Matrix.readFromFileDisk(basePath + "j.txt");
+        Matrix j = Matrix.readFromFileDisk(basePath + "j.txt", " ");
         double cost = j.get(0, 0);
-        Matrix grad = Matrix.readFromFileDisk(basePath + "grad.txt");
-        Matrix lambdaMatrix = Matrix.readFromFileDisk(basePath + "lambda.txt");
+        Matrix grad = Matrix.readFromFileDisk(basePath + "grad.txt", " ");
+        Matrix lambdaMatrix = Matrix.readFromFileDisk(basePath + "lambda.txt", " ");
         double lambda = lambdaMatrix.get(0, 0);
-        Matrix theta = Matrix.readFromFileDisk(basePath + "theta.txt");
+        Matrix theta = Matrix.readFromFileDisk(basePath + "theta.txt", " ");
 
         System.out.println("Location:\n" + basePath);
         System.out.println("cost: " + cost);
