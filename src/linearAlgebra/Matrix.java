@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,6 +34,16 @@ public class Matrix {
 
     public Matrix(double[][] doubleMatrix) {
         this.doubleMatrix = new DoubleMatrix(doubleMatrix);
+    }
+
+    public static Matrix createEmptyMatrix(int numberOfRows, int numberOfColumns) {
+        double[][] ac1Raw = new double[numberOfRows][];
+        for (int i = 0; i < ac1Raw.length; i++) {
+            ac1Raw[i] = new double[numberOfColumns];
+            Arrays.fill(ac1Raw[i], 0);
+        }
+
+        return new Matrix(ac1Raw);
     }
 
     public static Matrix create(List<double[]> doubles) {
@@ -112,6 +123,10 @@ public class Matrix {
         return new Matrix(this.doubleMatrix.mul(scalar));
     }
 
+    public Matrix divideElementsWise(double scalar) {
+        return new Matrix(this.doubleMatrix.div(scalar));
+    }
+
     public Matrix squared() {
         return new Matrix(MatrixFunctions.pow(doubleMatrix, 2));
     }
@@ -151,6 +166,10 @@ public class Matrix {
         return subSet(1, doubleMatrix.getRows()-1, 0, doubleMatrix.getColumns()-1);
     }
 
+    public Matrix removeFirstColumn() {
+        return subSet(0, doubleMatrix.getRows()-1, 1, doubleMatrix.getColumns()-1);
+    }
+
     public Matrix subSet(int rowStart, int rowEnd, int columnStart, int columnEnd) {
         double[] rows = new double[doubleMatrix.getRows()];
         for (int i = rowStart; i <= rowEnd; i++) {
@@ -170,6 +189,10 @@ public class Matrix {
         return new Matrix(ones.div(ones.add(MatrixFunctions.exp(doubleMatrix.neg()))));
     }
 
+    public Matrix sigmoidGradient() {
+        return sigmoid().multiplyElementWise(sigmoid().oneMinusThis());
+    }
+
     public Matrix log() {
         return new Matrix(MatrixFunctions.log(doubleMatrix));
     }
@@ -182,7 +205,7 @@ public class Matrix {
         return this.doubleMatrix.get(row, column);
     }
 
-    public void set(int row, int col, int value) {
+    public void set(int row, int col, double value) {
         this.doubleMatrix.put(row, col, value);
     }
 
@@ -227,10 +250,10 @@ public class Matrix {
         return b.toString();
     }
 
+
     public int getNumberOfRows() {
         return this.doubleMatrix.getRows();
     }
-
 
     public int getNumberOfColumns() {
         return this.doubleMatrix.getColumns();
@@ -255,6 +278,7 @@ public class Matrix {
     }
 
     public Matrix introduceColumnOfOnesAtHead() {
+
         int numberOfRows = this.getNumberOfRows();
         int numberOfColumns = this.getNumberOfColumns();
         DoubleMatrix result = new DoubleMatrix(numberOfRows, numberOfColumns +1);
@@ -266,6 +290,32 @@ public class Matrix {
             }
         }
         return new Matrix(result);
+    }
+
+    public Matrix introduceRowOfOnesAtHead() {
+
+        int numberOfRows = this.getNumberOfRows();
+        int numberOfColumns = this.getNumberOfColumns();
+        DoubleMatrix result = new DoubleMatrix(numberOfRows+1, numberOfColumns);
+
+        for (int j = 0; j < numberOfColumns; j++) {
+            result.put(0, j, 1.0);
+        }
+
+        for (int i = 0; i < numberOfRows; i++) {
+            for (int j = 0; j < numberOfColumns; j++) {
+                result.put(i+1, j, doubleMatrix.get(i, j));
+            }
+        }
+        return new Matrix(result);
+    }
+
+    public Matrix getColumn(int columnIndex) {
+        return new Matrix(this.doubleMatrix.getColumn(columnIndex));
+    }
+
+    public Matrix getRow(int columnIndex) {
+        return new Matrix(this.doubleMatrix.getRow(columnIndex));
     }
 }
 

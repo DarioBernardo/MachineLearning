@@ -20,7 +20,7 @@ public class FeedForwardTest {
 
     @BeforeClass
     public static void loadData() throws IOException {
-        String basePath = "test/resources/GradientDescentTestData/neuralNetwork/";
+        String basePath = "test/resources/GradientDescentTestData/neuralNetwork/feedForwardTest/";
         DataAndOutputPair train = Matrix.readFromCSV(basePath + "numbersPicture.csv", '\t');
 
         output = train.getOutput();
