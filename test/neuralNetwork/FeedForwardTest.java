@@ -37,24 +37,25 @@ public class FeedForwardTest {
         System.out.println("\nTheta1 size:\nColumns:\t" + theta1.getNumberOfColumns() + "\nRows:\t" + theta1.getNumberOfRows());
         System.out.println("\nTheta2 size:\nColumns:\t" + theta2.getNumberOfColumns() + "\nRows:\t" + theta2.getNumberOfRows());
 
-        double cost = NeuralNetwork.computeCost(trainData, output, theta1, theta2, 0.0);
+        Matrix expandedOut = NeuralNetwork.expandOutput(output, 10);
+        double cost = NeuralNetwork.computeCost(trainData, expandedOut, new NNWeights(theta1, theta2), 0.0);
         Assert.assertEquals(0.287629, cost, 0.0000009);
         System.out.println("\n\nCOST (Lambda = 0): " + cost);
 
         double lambda = 1.0;
-        double regularisationFactor = NeuralNetwork.regularisationFactor(theta1, theta2, lambda, trainData.getNumberOfRows());
+        double regularisationFactor = NeuralNetwork.regularisationFactor(new NNWeights(theta1, theta2), lambda, trainData.getNumberOfRows());
         Assert.assertEquals(0.096141, regularisationFactor, 0.0000009);
 
-        cost = NeuralNetwork.computeCost(trainData, output, theta1, theta2, lambda);
+        cost = NeuralNetwork.computeCost(trainData, expandedOut, new NNWeights(theta1, theta2), lambda);
         Assert.assertEquals(0.383770, cost, 0.0000009);
         System.out.println("\n\nCOST (Lambda = 1.0): " + cost);
 
 
         lambda = 0.5;
-        regularisationFactor = NeuralNetwork.regularisationFactor(theta1, theta2, lambda, trainData.getNumberOfRows());
+        regularisationFactor = NeuralNetwork.regularisationFactor(new NNWeights(theta1, theta2), lambda, trainData.getNumberOfRows());
         Assert.assertEquals(0.048070, regularisationFactor, 0.0000009);
 
-        cost = NeuralNetwork.computeCost(trainData, output, theta1, theta2, lambda);
+        cost = NeuralNetwork.computeCost(trainData, expandedOut, new NNWeights(theta1, theta2), lambda);
         Assert.assertEquals(0.335700, cost, 0.0000009);
         System.out.println("\n\nCOST (Lambda = 0.5): " + cost);
     }

@@ -235,6 +235,7 @@ public class Matrix {
 
         StringBuilder b = new StringBuilder();
         b.append("Matrix:\n");
+/*
 
         for (int j = 0; j < doubleMatrix.getRows(); j++) {
             for (int i = 0; i < doubleMatrix.getColumns(); i++) {
@@ -247,6 +248,15 @@ public class Matrix {
             b.append("\n");
         }
 
+        return b.toString();
+    }
+
+    public String toCompactString() {
+        StringBuilder b = new StringBuilder("Matrix:\n");
+
+*/
+        b.append("Number of columns:\t").append(getNumberOfColumns()).append("\n");
+        b.append("Number of rows:\t").append(getNumberOfRows()).append("\n");
         return b.toString();
     }
 

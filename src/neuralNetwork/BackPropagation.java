@@ -10,10 +10,10 @@ import java.util.Arrays;
 public class BackPropagation {
 
 
-    public static NNWeights performAlgorithm(NNWeights initialInitialization, Matrix trainingData, Matrix outputExpanded, double lambda) {
+    public static NNWeights performAlgorithm(NNWeights currentWeights, Matrix trainingData, Matrix outputExpanded, double lambda) {
 
-        Matrix theta1 = initialInitialization.getTheta1();
-        Matrix theta2 = initialInitialization.getTheta2();
+        Matrix theta1 = currentWeights.getTheta1();
+        Matrix theta2 = currentWeights.getTheta2();
 
         Matrix accumulator1 = Matrix.createEmptyMatrix(theta1.getNumberOfRows(), theta1.getNumberOfColumns());
         Matrix accumulator2 = Matrix.createEmptyMatrix(theta2.getNumberOfRows(), theta2.getNumberOfColumns());

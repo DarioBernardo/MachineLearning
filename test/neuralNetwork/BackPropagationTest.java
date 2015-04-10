@@ -53,21 +53,25 @@ public class BackPropagationTest {
 
         Matrix unrollParameters = unrollParameters(nnWeights.getTheta1(), nnWeights.getTheta2());
 
-        Assert.assertTrue("Checking that the unrolled parameters and the validation parameters have the same number of rows",
-                unrollParameters.getNumberOfRows() == numericGradient.getNumberOfRows());
+        checkThatTwoMatricesAreTheSame(numericGradient, unrollParameters);
+    }
 
-        Assert.assertTrue("Checking that the unrolled parameters and the validation parameters have the same number of columns",
-                unrollParameters.getNumberOfColumns() == numericGradient.getNumberOfColumns());
+    public static void checkThatTwoMatricesAreTheSame(Matrix expected, Matrix actual) {
+        Assert.assertTrue("Checking that the actual and expected matrices have the same number of rows",
+                actual.getNumberOfRows() == expected.getNumberOfRows());
+
+        Assert.assertTrue("Checking that the actual and expected matrices have the same number of columns",
+                actual.getNumberOfColumns() == expected.getNumberOfColumns());
 
         final double error = 1e-9;
 
-        for (int i = 0; i < numericGradient.getNumberOfRows(); i++) {
-            for (int j = 0; j < numericGradient.getNumberOfColumns(); j++) {
-                double expected = numericGradient.get(i, j);
-                double actual = unrollParameters.get(i, j);
-                Assert.assertEquals("The Back propagation algorithm has produced not expected result! for row = " + i ,
-                        actual,
-                        expected,
+        for (int i = 0; i < expected.getNumberOfRows(); i++) {
+            for (int j = 0; j < expected.getNumberOfColumns(); j++) {
+                double expectedValue = expected.get(i, j);
+                double actualValue = actual.get(i, j);
+                Assert.assertEquals("The matrices have different values for row = " + i ,
+                        actualValue,
+                        expectedValue,
                         error);
             }
         }
