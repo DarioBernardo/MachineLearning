@@ -3,7 +3,6 @@ package neuralNetwork;
 import linearAlgebra.Matrix;
 import linearAlgebra.MyConfusionMatrix;
 import logisticRegression.DataAndOutputPair;
-import logisticRegression.LogisticRegressionGradientDescentTest;
 import optimisationAlgorithms.Cost;
 import org.junit.Assert;
 import org.junit.BeforeClass;
