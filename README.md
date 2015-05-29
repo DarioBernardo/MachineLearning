@@ -2,6 +2,8 @@
 Machine Learning library by Dario Bernardo
 
 This repository contains a set of algorithms and tests units that I wrote in Java.
+The linear algebra operations are optimised using JBLAS library, a fast library for GPU based computations.
+The algorithms implemented at the moment are:
 
 - Logistic regression (with gradient descent)
 - Neural network (with gradient descent)
